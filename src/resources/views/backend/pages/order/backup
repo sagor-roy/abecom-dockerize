@@ -1,0 +1,200 @@
+@extends('backend.template.layout')
+
+@section('body-content')
+    <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+
+        <!-- begin:: Subheader -->
+        <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+            <div class="kt-container  kt-container--fluid ">
+                <div class="kt-subheader__main">
+                        <h3 class="kt-subheader__title">
+                              INVOICE     
+                        </h3>
+
+                    <span class="kt-subheader__separator kt-hidden"></span>
+                    <div class="kt-subheader__breadcrumbs">
+                        <i class="flaticon2-shelter"></i>
+                        <span class="kt-subheader__breadcrumbs-separator"></span>
+                        <a href="{{ route('order.all') }}" class="kt-subheader__breadcrumbs-link">
+                            Go To Order Page 
+                        </a>
+                        <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+                    </div>
+                        <!-- print and download option start -->
+                        <div class="kt-invoice__actions">
+                              <div class="kt-invoice__container">
+                                    <button type="button" class="btn btn-label-brand btn-bold" id="downloadPDF">
+                                          Download PDF
+                                          <i class="fas fa-file-download" style="padding-left: 5px"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-brand btn-bold" onclick="window.print();">
+                                          Print Invoice
+                                          <i class="fas fa-print" style="padding-left: 5px"></i>
+                                    </button>
+                              </div>
+                        </div>
+                        <!-- print and download option end -->
+                </div>
+            </div>
+        </div>
+        <!-- end:: Subheader -->
+
+        <!-- begin:: Content -->
+        <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+            <div class="kt-portlet" id="kt-portlet">
+                   <div class="kt-portlet__body kt-portlet__body--fit">
+                        <div class="kt-invoice-2">
+                              <div class="kt-invoice__head">
+                                    <div class="kt-invoice__container" style="width: 100%">
+                                          <div class="kt-invoice__brand">
+                                                <h1 class="kt-invoice__title">INVOICE</h1>
+                                                <div href="#" class="kt-invoice__logo">
+                                                      <a href="{{ route('home') }}" target="__blank">
+                                                      <img src="{{ asset('images/contact/'.App\Models\ContactDetail::first()->logo) }}" width="300px">
+                                                      </a>
+
+                                                      <span class="kt-invoice__desc">
+                                                            <span>
+                                                                  {!! App\Models\ContactDetail::first()->address !!} 
+                                                            </span>
+                                                            <span>
+                                                                  Hotline: +88{{ App\Models\ContactDetail::first()->hotline }}
+                                                            </span>
+                                                            <span>
+                                                                  Email : {{ App\Models\ContactDetail::first()->email }}
+                                                            </span>
+                                                      </span>
+                                                </div>
+                                          </div>
+
+                                          <div class="kt-invoice__items">
+                                                <div class="kt-invoice__item">
+                                                <span class="kt-invoice__subtitle">INVOICE DATE</span>
+                                                <span class="kt-invoice__text">{{ $order->created_at->toDayDateTimeString() }}</span>
+                                                </div>
+                                                <div class="kt-invoice__item">
+                                                <span class="kt-invoice__subtitle">INVOICE NO.</span>
+                                                <span class="kt-invoice__text">#{{ $order->id }}</span>
+                                                </div>
+                                                <div class="kt-invoice__item">
+                                                      <span class="kt-invoice__subtitle">INVOICE TO.</span>
+                                                      <span class="kt-invoice__subtitle">Customer Name : {{ $order->name }}</span>
+                                                      <span class="kt-invoice__subtitle">Customer Phone : +88{{ $order->phone }} </span>
+                                                      <span class="kt-invoice__subtitle">
+                                                            {{ $order->shipping_address }}
+                                                      </span>
+                                                      @if( $order->customer_id == 0 )
+                                                      <span class="kt-invoice__subtitle">Checkout as a guest</span>
+                                                      @endif
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                              <div class="kt-invoice__body" style="padding-top: 0">
+                                    <div class="kt-invoice__container"  style="width: 100%">
+                                          <div class="table-responsive">
+                                                <table class="table order-product-table">
+                                                      <thead>
+                                                            <tr>
+                                                                  <th>IMAGE</th>
+                                                                  <th style="text-align: left">NAME</th>
+                                                                  <th>PRICE</th>
+                                                                  <th>QUANTITY</th>
+                                                                  <th>TOTAL</th>
+                                                            </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                            @foreach( $order->order_product as $order_product )
+                                                            <tr>
+                                                                  <td>
+                                                                        <img src="{{ asset('images/product/'.$order_product->product->thumbnail) }}" width="50px" alt="">
+                                                                  </td>
+                                                                  <td style="text-align: left; padding-left: 10px">
+                                                                        <p>{{ $order_product->product->name }}</p>
+                                                                        @if( $order_product->product_varient_value_id )
+                                                                        <p>{{ $order_product->product_attribute->attribute->name }} : {{ $order_product->product_attribute->value }}</p>
+                                                                        @endif
+                                                                  </td>
+                                                                  <td>
+                                                                        ৳{{ $order_product->unit_price }} BDT
+                                                                  </td>
+                                                                  <td>
+                                                                        {{ $order_product->quantity }}
+                                                                  </td>
+                                                                  <td>
+                                                                        ৳{{ $order_product->unit_price * $order_product->quantity }} BDT
+                                                                  </td>
+                                                            </tr>
+                                                            @endforeach
+                                                      </tbody>
+                                                </table>
+                                                
+                                          </div>
+                                          <div class="row total-row">
+                                                <p>Payment Method : {{ $order->paid_by }} </p>
+                                                <p>Order Status : {{ $order->order_status }} </p>
+                                                @if( $order->shipping_charge == 0 )
+                                                <p>Shipping Charge : Courier Charge</p>
+                                                @else
+                                                <p>Shipping Charge : ৳{{ $order->shipping_charge }} BDT</p>
+                                                @endif
+                                                @if( $order->customer_id != 0 )
+                                                <p>Customer Balance : ৳{{ $order->customer_balance }} BDT</p>
+                                                @endif
+                                                @php
+                                                      $total = $order->amount_after_discount ? $order->amount_after_discount : $order->amount;
+                                                @endphp
+                                                <p>Sub Total : ৳{{ $order->amount }} BDT</p>
+
+                                                @if( $order->coupon_id )
+                                                <p> Discount Sub Total : ৳{{ $order->amount_after_discount }} BDT</p>
+                                                <p>Coupon Code : {{ $order->coupon->code }} </p>
+                                                @endif
+
+                                                
+
+                                                @if( $order->customer_balance > $total )
+                                                <p>Total : 
+                                                      @if( $order->shipping_charge == 0 )
+                                                      Courier Charge
+                                                      @else
+                                                      ৳{{  $order->shipping_charge  }} BDT
+                                                      @endif
+                                                </p>
+                                                @else
+                                                <p>Total : ৳{{  ( $order->shipping_charge + $total ) - $order->customer_balance }} BDT
+                                                      @if( $order->shipping_charge == 0 ) + Courier charge @endif
+                                                </p>
+                                                @endif
+                                                
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+            
+
+        </div>
+        <!-- end:: Content -->
+    </div>
+@endsection
+
+@section('per_page_js')
+<link href="{{ asset('backend/css/demo1/pages/invoices/invoice-2.css') }}" rel="stylesheet" type="text/css" />
+<script src="{{ asset('backend/dist/js/html2pdf.min.js') }}"></script>
+<script>
+      document.getElementById("downloadPDF").addEventListener("click", function(){
+            const invoice = document.getElementById("kt-portlet")
+            var opt = {
+                  margin: 0,
+                  filename: 'invoice_{{ $order->id }}.pdf',
+                  image: { type: 'jpeg' , quality : 0.98 },
+                  html2canvas : { scale : 1 },
+                  jsPDF : { unit : 'in' , format : 'letter' , orientation : 'portrait' }
+            }
+            html2pdf().from(invoice).set(opt).save()
+      })      
+</script>   
+@endsection

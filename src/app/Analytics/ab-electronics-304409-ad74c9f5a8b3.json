@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ab-electronics-304409",
+  "private_key_id": "ad74c9f5a8b3d0d89e8ae20514638437d89c8764",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsLexY4/z2M1xF\nFHJ759K81F7AghfNyRB5iD5BxIbQ813ZU1hAEZ5istB7UlReZD/N4MZv1E/wGONw\nivHBGJVc2CzMIJu5Ymn45+cB6/YuETlohMSeniHjWvpuJR66wu+41gDoIATw7NQG\ndpSDzbo5px6sEpAu9kyw7kBL6h4t2VgmufhHNS852i/WN+SmQx0VDTAlbnebPxQw\nxaHWd+/PHSQtI3sbE4ls+0+krdCC1WXm8DzFPaAJnZaGhVUi+ynJOHWl82rm2p05\n0CALbmUcf297VWBIrWNRoOloQrIW1KDBrdAYlKUUWBmjptuuhuLoyAgG+T7qhOVl\n/L1p3HhVAgMBAAECggEAJ0nhXRVFEz78Bo1YZFqtVUZWirIE0YHYXwsOPb6lDsgB\nucYRZKlAjYAFH6bVNqbEgmuQjFMTnJNpTrR93tSHvKRdcITeU+qXiOMN7PvVdISc\np3NoVFN8Ix+O9pRE01QJFJHMqisoRXudFA557CuFG4O9dYFU4kp0jIkJJel50nce\nm764a9EZnQ+ROa9H6G+iO5BvWzLiodXyziXFdGw+DXbmgMnJHZuFycjctVZ4IG8K\n570qLfdUTfs9VpG4oXrJ4ROEYiiQFBtaG0HHroyRRYs2qXMW/2M2W37twup0g455\ncGW8krrh9WJCWXoVXEDJQ/IGpevS91AaMhWNmEflzwKBgQDTScnNHtOtVB710sPH\n5oAXyRlnR8kIlbFUvfycI0qOt316EAkhyl3zlL3bAIpPP603SDzDD3mivjCKoM/e\naR8gAZH45ws3JpnNHwkjNG8TsJ97gz4h+kJca//uWl1WJBCeRRF739ZwEqr3S2Y8\nJ953e86Ee1+67HWOC/EQTXcnHwKBgQDQnXlR5X+I3KWXpduIXrUMjTSbBRm28RHm\npffxTL6qSbAU8GSNEz4dz/pO3ZXtHHLstWHLoyqEQJbRpWBLnAGOVwvHWHY0lA3d\nRFWp4tSgmf4YZzqcfkLNeBcygQpaiSt5fSWafnnxhT7/aQM/Sb9XUxG5+7xJDy+X\nriLtwxr2CwKBgDL8oHUeVkiCf0IlDVfE+O5EehvhR9MJhJSFkFsBbTGJd/8ntXxx\nAEESiMo7lCTRofQwO3F634h1SvN5IRBz363ykw40exFhAEZukd7r/U4MFkBRCIJc\niP0Slt0m81UhON1on3J8Lpw29QjeKhqkKFw/BTQVLaHHBAs2OIMNno5TAoGBAIon\nDzXuHxR60urnusfHuGx0gtb6fLoLUciGNvnE0iuhmwty25QVnzhNCD38PpKFGZKq\n1/Xsu3ZT880okOnhiaJDARjl+3n8ZmYXIAfeoOMut/hfPJBwiTrbAbm/fSTR3Emb\nWDDE+2q3zC2G1NCvvRhOednJ3Tog5Wq0torwf0VbAoGBAJQ7leKtma23dMRXZ2oS\nruI8RIq8jZ2g4RzpvAnToCH/TCf+shMitETDm8Dc6fZ0XPBT+mjEE9rpfEvKetvZ\n52ri778TOoM+gMtMyxIwv8/V5nq6p/yeC+OEr2Z4XRe934STqgesLGoO43qbi9Es\nU3wbJTIQCmI3Qf8sf0/YNqSR\n-----END PRIVATE KEY-----\n",
+  "client_email": "google-api@ab-electronics-304409.iam.gserviceaccount.com",
+  "client_id": "109155530365593419154",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/google-api%40ab-electronics-304409.iam.gserviceaccount.com"
+}
